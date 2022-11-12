@@ -13,18 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages/homePage');
-});
+Route::get('/', [\App\Http\Controllers\coursesController::class, 'index']);
 
-Route::get('/online-courses',function() {
-    $courses = [
-        ['name' => 'Matematika', 'available' => true],
-        ['name' => 'Fisika', 'available' => true],
-        ['name' => 'Musik', 'available' => false],
-        ['name' => 'Biologi', 'available' => true],
-        ['name' => 'Kimia', 'available' => false]
-    ];
-
-    return view('pages/coursesPage')->with('courses', $courses);
-});
+Route::get('/online-courses',[\App\Http\Controllers\coursesController::class, 'show']);
